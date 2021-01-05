@@ -1,0 +1,14 @@
+{
+    "name": "hexlet/code",
+    "description": "project-lvl1",
+    "authors": [
+        {
+            "name": "Tvard",
+            "email": "i.tvard@gmail.com"
+        }
+    ],
+    "require": {},
+    "bin": [
+            "bin/brain-games"
+            ]
+}
