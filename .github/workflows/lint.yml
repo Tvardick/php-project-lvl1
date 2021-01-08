@@ -38,5 +38,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: lint
         run: make lint
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
