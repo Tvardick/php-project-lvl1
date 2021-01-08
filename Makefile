@@ -1,5 +1,6 @@
 install:
 		composer install
+		composer require --dev squizlabs/PHP_CodeSniffer
 console:
 	composer exec --verbose psysh
 brain-games:
