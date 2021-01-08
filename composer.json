@@ -1,5 +1,6 @@
 {
     "name": "hexlet/code",
+    "license": "GPL-3.0-only",
     "description": "project-lvl1",
     "authors": [
         {
@@ -7,8 +8,23 @@
             "email": "i.tvard@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "wp-cli/php-cli-tools": "^0.11.11"
+    },
     "bin": [
             "bin/brain-games"
-            ]
+            ],
+    "autoload": {
+      "psr-4": {
+            "Php\\Package\\": "src",
+            "Php\\Package\\Tests\\": "tests"
+          },
+          "files": ["src/Cli.php"]
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+        "scripts": {
+                "phpcs": "phpcs"
+        }
 }
