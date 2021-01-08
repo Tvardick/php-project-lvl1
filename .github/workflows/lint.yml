@@ -38,6 +38,5 @@ jobs:
       # Runs a single command using the runners shell
       - name: lint
         run: make lint
-        uses: squizlabs/PHP_CodeSniffer@v3
 
 
