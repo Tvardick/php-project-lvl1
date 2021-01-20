@@ -6,3 +6,6 @@
 
 ### GitHub Action
 [![Github Actions Status](https://github.com/Tvardick/php-project-lvl1/workflows/CI/badge.svg)](https://github.com/Tvardick/php-project-lvl1/actions)
+
+
+https://asciinema.org/a/iSr84wrtrJtVHDF3Oxyarl4SA
