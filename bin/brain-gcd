@@ -12,5 +12,5 @@ if (file_exists($autoloadPath1)) {
 }
 
 
-use function BrainGames\Project\Even\isTheEvenNumber;
-$startGame = isTheEvenNumber();
+use function BrainGames\Project\Gcd\letsGreatCommonDivider;
+$startGame = letsGreatCommonDivider();

@@ -6,13 +6,13 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function isTheEvenNumber($name)
+function isTheEvenNumber()
 {
-        $round = 1;
+        $currentRound = 1;
         $maxLimitRound = 3;
         $name = helloUser();
         line('Answer "yes" if the number is even, otherwise answer "no".');
-    while ($round <= $maxLimitRound) {
+    while ($currentRound <= $maxLimitRound) {
         $randomNumber = rand(1, 99);
         line("Quetion: %s", $randomNumber);
         $answer = prompt("Your Answer");
@@ -25,7 +25,7 @@ Let's try again, %s!", $answer, $name);
         } else {
                 line("Correct!");
         }
-        $round += 1;
+        $currentRound += 1;
     }
         return line("Congratulations, %s!", $name);
 }

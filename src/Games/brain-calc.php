@@ -9,6 +9,7 @@ use function BrainGames\Project\Cli\helloUser;
 function letsCalcIt()
 {
     $name = helloUser();
+    line("What is the result of the expression?");
     $currentRound = 1;
     $maxRound = 3;
     while ($currentRound <= $maxRound) {
@@ -16,8 +17,8 @@ function letsCalcIt()
             $randomSecondNumber = rand(1, 10);
             $randomOperand = randomOperand();
             $result = "{$randomFirstNumber}{$randomOperand}{$randomSecondNumber}";
+            //require langleyfoxall/math_eval
             $rigthAnswer = math_eval($result);
-            line("What is the result of the expression?");
             line("Question: %s", $result);
             $answer = prompt("Your Answer");
         if ($answer != $rigthAnswer) {
