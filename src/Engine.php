@@ -1,7 +1,34 @@
 <?php
 
-function unknowName()
+namespace BrainGames\Project\Engine;
+
+use function cli\line;
+use function cli\prompt;
+
+function game_Flow($quest, $task, $answer, $wrongAnswer, $difference)
 {
+        $name = helloUser();
+        line("%s", $task);
+    while ($currentRound <= $maxLimitRound) {
+            $randomFirstNumber = rand(1, 100);
+            $randomSecondNumber = rand(1, 100);
+            $result = isTheGreatCommonDivider($randomFirstNumber, $randomSecondNumber);
+            line("Question : %s", $task);
+            $userAnswer = prompt("Your Answer");
+                    $currentRound += 1;
+    }
+    return line("Congratulations, %s!", $name);
+}
+
+function checkingResult($answer, $rigthAnswer, $name)
+{
+    if ($answer != $rigthAnswer) {
+        return line("%s is wrong answer ;(. Correct answer was %s.
+                Let's try again, %s", $answer, $rigthAnswer, $name);
+    } else {
+        return line("Correct!");
+    }
+}
         /*
 Welcome to the Brain Games!
 May I have your name? Sam
@@ -25,5 +52,3 @@ Your answer: 1
 Let's try again, Sam!
 
          */
-}
-

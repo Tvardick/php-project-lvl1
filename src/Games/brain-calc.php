@@ -13,10 +13,8 @@ function letsCalcIt()
     $currentRound = 1;
     $maxRound = 3;
     while ($currentRound <= $maxRound) {
-            $randomFirstNumber = rand(1, 99);
-            $randomSecondNumber = rand(1, 10);
-            $randomOperand = randomOperand();
-            $result = "{$randomFirstNumber}{$randomOperand}{$randomSecondNumber}";
+            $getTask = randomOperation();
+            $result = implode(" ", $getTask);
             //require langleyfoxall/math_eval
             $rigthAnswer = math_eval($result);
             line("Question: %s", $result);
@@ -33,9 +31,15 @@ function letsCalcIt()
 }
 
 
-function randomOperand()
+function randomOperation()
 {
+    $result = [];
     $operands = ["+", "-", "*"];
-    $randomNumber = rand(0, 2);
-    return $operands[$randomNumber];
+    $randomOperandNumber = rand(0, 2);
+    $randomFirstNumber = rand(1, 99);
+    $randomSecondNumber = rand(1, 10);
+    $result[] = $randomFirstNumber;
+    $result[] = $operands[$randomOperandNumber];
+    $result[] = $randomSecondNumber;
+    return $result;
 }

@@ -9,13 +9,15 @@
         }
     ],
     "require": {
-        "wp-cli/php-cli-tools": "^0.11.11"
+        "wp-cli/php-cli-tools": "^0.11.11",
+        "langleyfoxall/math_eval": "^2.0.0"
     },
     "bin": [
             "bin/brain-games",
             "bin/brain-even",
             "bin/brain-calc",
-            "bin/brain-gcd"
+            "bin/brain-gcd",
+            "bin/brain-progression"
             ],
     "autoload": {
       "psr-4": {
@@ -25,7 +27,9 @@
           "files": ["src/Cli.php",
                     "src/Games/brain-even.php",
                     "src/Games/brain-calc.php",
-                    "src/Games/brain-gcd.php"]
+                    "src/Games/brain-gcd.php",
+                    "src/Games/brain-progression.php",
+                    "src/Engine.php"]
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5"
