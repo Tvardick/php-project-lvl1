@@ -16,11 +16,11 @@ function letsGreatCommonDivider()
             $randomFirstNumber = rand(1, 100);
             $randomSecondNumber = rand(1, 100);
             $result = isTheGreatCommonDivider($randomFirstNumber, $randomSecondNumber);
-            line("Question : %s and %s", $randomFirstNumber, $randomSecondNumber);
+            line("Question: %s %s", $randomFirstNumber, $randomSecondNumber);
             $answer = prompt("Your Answer");
         if ($answer != $result) {
                             return line("%s is wrong answer ;(. Correct answer was %s.
-                Let's try again, %s", $answer, $result, $name);
+                Let's try again, %s!", $answer, $result, $name);
         } else {
                             line("Correct!");
         }
