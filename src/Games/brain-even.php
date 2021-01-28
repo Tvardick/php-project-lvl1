@@ -11,6 +11,7 @@ function isTheEvenNumber()
         $currentRound = 1;
         $maxLimitRound = 3;
         $name = helloUser();
+        var_dump($name);
         line('Answer "yes" if the number is even, otherwise answer "no".');
     while ($currentRound <= $maxLimitRound) {
         $randomNumber = rand(1, 99);
