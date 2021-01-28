@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function letsCalcIt()
+function letsCalcIt(): string
 {
     $name = helloUser();
     line("What is the result of the expression?");
@@ -31,7 +31,7 @@ function letsCalcIt()
 }
 
 
-function randomOperation()
+function randomOperation(): array
 {
     $result = [];
     $operands = ["+", "-", "*"];

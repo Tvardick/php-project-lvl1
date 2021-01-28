@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function isPrimeNumber()
+function isPrimeNumber(): string
 {
     $name = helloUser();
     line("Answer \"yes\" if the number is prime, otherwise answer \"no\".");
@@ -29,7 +29,7 @@ function isPrimeNumber()
 }
 
 
-function checkingPrimeNumber($num)
+function checkingPrimeNumber($num): string
 {
         $bCheck = true;
         $highestIntegralSquareRoot = floor(sqrt($num));

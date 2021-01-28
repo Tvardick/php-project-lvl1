@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function generationTask()
+function generationTask(): array
 {
         $numbers = [];
         $counter = 0;
@@ -21,7 +21,7 @@ function generationTask()
         return $numbers;
 }
 
-function randomNumberReplacement()
+function randomNumberReplacement(): string
 {
         $name = helloUser();
         line("What number is missing in the progression?");

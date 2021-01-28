@@ -4,8 +4,9 @@ namespace BrainGames\Project\Engine;
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Project\Cli\helloUser;
 
-function game_Flow($quest, $task, $answer, $wrongAnswer, $difference)
+function game_Flow(): string
 {
         $name = helloUser();
         line("%s", $task);

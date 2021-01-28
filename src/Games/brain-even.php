@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function isTheEvenNumber()
+function isTheEvenNumber(): string
 {
         $currentRound = 1;
         $maxLimitRound = 3;
@@ -29,7 +29,7 @@ Let's try again, %s!", $answer, $rigthAnswer, $name);
         return line("Congratulations, %s!", $name);
 }
 
-function checkingEvenNumber($num)
+function checkingEvenNumber($num): string
 {
     if ($num % 2 === 0) {
         return "yes";
