@@ -25,7 +25,7 @@ function randomNumberReplacement()
 {
         $name = helloUser();
         line("What number is missing in the progression?");
-        $replacement = "...";
+        $replacement = "..";
         $currentRound = 1;
         $maxRound = 3;
     while ($currentRound <= $maxRound) {

@@ -19,7 +19,7 @@ function isPrimeNumber()
             $answer = prompt("Your Answer");
         if ($answer != $rigthAnswer) {
                     return line("%s is wrong answer ;(. Correct answer was %s.
-        Let's try again, %s", $answer, $rigthAnswer, $name);
+        Let's try again, %s!", $answer, $rigthAnswer, $name);
         } else {
                     line("Correct!");
         }
