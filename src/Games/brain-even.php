@@ -14,7 +14,7 @@ function isTheEvenNumber()
         line('Answer "yes" if the number is even, otherwise answer "no".');
     while ($currentRound <= $maxLimitRound) {
         $randomNumber = rand(1, 99);
-        line("Quetion:%s", $randomNumber);
+        line("Quetion: %s", $randomNumber);
         $answer = prompt("Your Answer");
         $rigthAnswer = checkingEvenNumber($randomNumber);
         if ($answer != $rigthAnswer) {
