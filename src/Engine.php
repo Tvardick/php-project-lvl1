@@ -29,7 +29,9 @@ function checkingResult($answer, $rigthAnswer, $name)
         return line("Correct!");
     }
 }
+
         /*
+
 Welcome to the Brain Games!
 May I have your name? Sam
 Hello, Sam!

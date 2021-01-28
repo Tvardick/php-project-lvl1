@@ -16,16 +16,23 @@ function isTheEvenNumber()
         $randomNumber = rand(1, 99);
         line("Quetion: %s", $randomNumber);
         $answer = prompt("Your Answer");
-        if ($randomNumber % 2 === 0 && $answer != "yes") {
-                return line("'%s' is wrong answer ;(. Correct answer was 'yes'.
-Let's try again, %s!", $answer, $name);
-        } elseif ($randomNumber % 2 != 0 && $answer != "no") {
-                return line("'%s' is wrong answer ;(. Correct answer was 'no'.
-Let's try again, %s!", $answer, $name);
+        $rigthAnswer = checkingEvenNumber($randomNumber);
+        if ($answer != $rigthAnswer) {
+             return line("%s is wrong answer ;(. Correct answer was %s.
+Let's try again, %s!", $answer, $rigthAnswer, $name);
         } else {
                 line("Correct!");
         }
         $currentRound += 1;
     }
         return line("Congratulations, %s!", $name);
+}
+
+function checkingEvenNumber($num)
+{
+    if ($num % 2 === 0) {
+        return "yes";
+    } else {
+        return "no";
+    }
 }
