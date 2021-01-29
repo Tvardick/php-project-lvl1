@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function isPrimeNumber(): string
+function isPrimeNumber(): ?string
 {
     $name = helloUser();
     line("Answer \"yes\" if the number is prime, otherwise answer \"no\".");

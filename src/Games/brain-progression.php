@@ -21,7 +21,7 @@ function generationTask(): array
         return $numbers;
 }
 
-function randomNumberReplacement(): string
+function randomNumberReplacement(): ?string
 {
         $name = helloUser();
         line("What number is missing in the progression?");

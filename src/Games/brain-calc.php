@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function letsCalcIt(): string
+function letsCalcIt(): ?string
 {
     $name = helloUser();
     line("What is the result of the expression?");
