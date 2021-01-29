@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function isTheEvenNumber(): string
+function isTheEvenNumber(): ?string
 {
         $currentRound = 1;
         $maxLimitRound = 3;
