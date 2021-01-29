@@ -29,7 +29,7 @@ function isPrimeNumber(): ?string
 }
 
 
-function checkingPrimeNumber($num): string
+function checkingPrimeNumber(int $num): string
 {
         $bCheck = true;
         $highestIntegralSquareRoot = floor(sqrt($num));

@@ -29,7 +29,7 @@ Let's try again, %s!", $answer, $rigthAnswer, $name);
         return line("Congratulations, %s!", $name);
 }
 
-function checkingEvenNumber($num): string
+function checkingEvenNumber(int $num): string
 {
     if ($num % 2 === 0) {
         return "yes";

@@ -6,31 +6,6 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\helloUser;
 
-function game_Flow(): string
-{
-        $name = helloUser();
-        line("%s", $task);
-    while ($currentRound <= $maxLimitRound) {
-            $randomFirstNumber = rand(1, 100);
-            $randomSecondNumber = rand(1, 100);
-            $result = isTheGreatCommonDivider($randomFirstNumber, $randomSecondNumber);
-            line("Question : %s", $task);
-            $userAnswer = prompt("Your Answer");
-                    $currentRound += 1;
-    }
-    return line("Congratulations, %s!", $name);
-}
-
-function checkingResult($answer, $rigthAnswer, $name)
-{
-    if ($answer != $rigthAnswer) {
-        return line("%s is wrong answer ;(. Correct answer was %s.
-                Let's try again, %s", $answer, $rigthAnswer, $name);
-    } else {
-        return line("Correct!");
-    }
-}
-
         /*
 
 Welcome to the Brain Games!
