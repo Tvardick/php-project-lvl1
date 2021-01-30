@@ -2,44 +2,35 @@
 
 namespace BrainGames\Project\Calc;
 
-use function cli\line;
+use function BrainGames\Project\Engine\gameFlow;
 use function cli\prompt;
-use function BrainGames\Project\Cli\helloUser;
 
 function letsCalcIt(): ?string
 {
-    $name = helloUser();
-    line("What is the result of the expression?");
-    $currentRound = 1;
-    $maxRound = 3;
-    while ($currentRound <= $maxRound) {
+    $round = prompt("how many round you want");
+    $data = [];
+    $hello = "What is the data of the expression?";
+    for ($i = 1; $i <= $round; $i++) {
             $getTask = randomOperation();
-            $result = implode(" ", $getTask);
-            //require langleyfoxall/math_eval
-            $rigthAnswer = math_eval($result);
-            line("Question: %s", $result);
-            $answer = prompt("Your Answer");
-        if ($answer != $rigthAnswer) {
-            return line("%s is wrong answer ;(. Correct answer was %s.
-                Let's try again, %s!", $answer, $rigthAnswer, $name);
-        } else {
-                    line("Correct!");
-        }
-            $currentRound += 1;
+            $rigthAnswer = math_eval($getTask);
+            $data[] = $getTask;
+            $data[] = $rigthAnswer;
     }
-    return line("Congratulations, %s!", $name);
+    $sendData = gameFlow($hello, $data, $round);
+    return $sendData;
 }
 
 
-function randomOperation(): array
+function randomOperation(): string
 {
-    $result = [];
+    $data = [];
     $operands = ["+", "-", "*"];
     $randomOperandNumber = rand(0, 2);
     $randomFirstNumber = rand(1, 99);
     $randomSecondNumber = rand(1, 10);
-    $result[] = $randomFirstNumber;
-    $result[] = $operands[$randomOperandNumber];
-    $result[] = $randomSecondNumber;
+    $data[] = $randomFirstNumber;
+    $data[] = $operands[$randomOperandNumber];
+    $data[] = $randomSecondNumber;
+    $result = implode(" ", $data);
     return $result;
 }

@@ -2,31 +2,18 @@
 
 namespace BrainGames\Project\Even;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Project\Cli\helloUser;
+use function BrainGames\Project\Engine\gameFlow;
 
 function isTheEvenNumber(): ?string
 {
-        $currentRound = 1;
-        $maxLimitRound = 3;
-        $name = helloUser();
-        var_dump($name);
-        line('Answer "yes" if the number is even, otherwise answer "no".');
-    while ($currentRound <= $maxLimitRound) {
-        $randomNumber = rand(1, 99);
-        line("Question: %s", $randomNumber);
-        $answer = prompt("Your Answer");
-        $rigthAnswer = checkingEvenNumber($randomNumber);
-        if ($answer != $rigthAnswer) {
-             return line("%s is wrong answer ;(. Correct answer was %s.
-Let's try again, %s!", $answer, $rigthAnswer, $name);
-        } else {
-                line("Correct!");
-        }
-        $currentRound += 1;
+    $helloUser = 'Answer "yes" if the number is even, otherwise answer "no".';
+    $data = [];
+    for ($i = 0, $end = 2; $i <= $end; $i++) {
+        $data[] = $randomNumber = rand(1, 100);
+        $data[] = $rigthAnswer = checkingEvenNumber($randomNumber);
     }
-        return line("Congratulations, %s!", $name);
+    $sendData = gameFlow($helloUser, $data);
+    return $sendData;
 }
 
 function checkingEvenNumber(int $num): string
