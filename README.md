@@ -6,16 +6,12 @@
 [![Github Actions Status](https://github.com/Tvardick/php-project-lvl1/workflows/CI/badge.svg)](https://github.com/Tvardick/php-project-lvl1/actions)
 
 ### Brain-Even
-https://asciinema.org/a/iSr84wrtrJtVHDF3Oxyarl4SA
-
+https://asciinema.org/a/TurvTy3sixpxFLkYztHETpqZA
 ### Brain-Calc
-https://asciinema.org/a/nDH2KhyfegS98r3BPdDE6ROp1
-
+https://asciinema.org/a/nqwpvNb3LtBGjcQPmLZbe7tUa
 ### Brain-Gcd
-https://asciinema.org/a/VRmWtaGsD9rlybhaBwVj8zEaD
-
+https://asciinema.org/a/nuFRJJLNA2Jiy4lda0qJr1TXz
 ### Brain-Progression
-https://asciinema.org/a/xScLy7VcN3kmqhu4l245c5vxI
-
+https://asciinema.org/a/L2meoF87xv3HGG70raIaMjfNA
 ### Brain-Prime
-https://asciinema.org/a/W6GY9ELtqXfJkozAPds9O2UJR
+https://asciinema.org/a/X3Yh4SdChtjT435tIfPndpyvK
