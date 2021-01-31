@@ -7,16 +7,15 @@ use function cli\prompt;
 
 function letsCalcIt(): ?string
 {
-    $round = prompt("how many round you want");
     $data = [];
     $hello = "What is the data of the expression?";
-    for ($i = 1; $i <= $round; $i++) {
+    for ($start = 1, $final = 3; $start <= $final; $start++) {
             $getTask = randomOperation();
             $rigthAnswer = math_eval($getTask);
             $data[] = $getTask;
             $data[] = $rigthAnswer;
     }
-    $sendData = gameFlow($hello, $data, $round);
+    $sendData = gameFlow($hello, $data);
     return $sendData;
 }
 

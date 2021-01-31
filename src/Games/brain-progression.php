@@ -4,7 +4,7 @@ namespace BrainGames\Project\Progression;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Project\Cli\helloUser;
+use function BrainGames\Project\Cli\whatIsYourName;
 
 function generationTask(): array
 {
@@ -23,7 +23,7 @@ function generationTask(): array
 
 function randomNumberReplacement(): ?string
 {
-        $name = helloUser();
+        $name = whatIsYourName();
         line("What number is missing in the progression?");
         $replacement = "..";
         $currentRound = 1;

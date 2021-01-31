@@ -4,13 +4,13 @@ namespace BrainGames\Project\Gcd;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Project\Cli\helloUser;
+use function BrainGames\Project\Cli\whatIsYourName;
 
 function letsGreatCommonDivider(): ?string
 {
     $currentRound = 1;
     $maxLimitRound = 3;
-    $name = helloUser();
+    $name = whatIsYourName();
     line("Find the greatest common divisor of given numbers.");
     while ($currentRound <= $maxLimitRound) {
             $randomFirstNumber = rand(1, 100);
