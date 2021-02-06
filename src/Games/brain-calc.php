@@ -9,7 +9,7 @@ function tryCalc(): void
     $data = [];
     $hello = "What is the data of the expression?";
     $currentRound = 1;
-    $limitMaxRounds = 3;
+    $limitMaxRounds = LIMITROUND;
     while ($currentRound <= $limitMaxRounds) {
             $getTask = generationTask();
             $rigthAnswer = math_eval($getTask);

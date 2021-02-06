@@ -6,11 +6,13 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\whatIsYourName;
 
+define('LIMITROUND', '3');
+
 function gameFlow(string $hello, array $data): ?string
 {
         $name = whatIsYourName();
         $hello = line("%s", $hello);
-        $limitMaxRounds = count($data) / 2;
+        $limitMaxRounds = LIMITROUND;
         $task = 0;
         $rigthAnswer = 1;
 

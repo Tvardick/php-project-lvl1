@@ -7,7 +7,7 @@ use function BrainGames\Project\Engine\gameFlow;
 function findCommonDivider(): void
 {
     $currentRound = 1;
-    $limitMaxRounds = 3;
+    $limitMaxRounds = LIMITROUND;
     $data = [];
     $hello = "Find the greatest common divisor of given numbers.";
     while ($currentRound <= $limitMaxRounds) {

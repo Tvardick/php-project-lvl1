@@ -9,7 +9,7 @@ function getEvenNumber(): void
     $hello = 'Answer "yes" if the number is even, otherwise answer "no".';
     $data = [];
     $currentRound = 1;
-    $limitMaxRounds = 3;
+    $limitMaxRounds = LIMITROUND;
     while ($currentRound <= $limitMaxRounds) {
         $data[] = $randomNumber = rand(1, 100);
         $data[] = $rigthAnswer = checkEvenNumber($randomNumber);

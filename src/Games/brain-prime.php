@@ -7,7 +7,7 @@ use function BrainGames\Project\Engine\gameFlow;
 function isPrimeNumber(): void
 {
     $currentRound = 1;
-    $limitMaxRounds = 3;
+    $limitMaxRounds = LIMITROUND;
     $hello = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
     $data = [];
     while ($currentRound <= $limitMaxRounds) {

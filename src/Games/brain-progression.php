@@ -9,7 +9,7 @@ function getProgress(): void
         $hello = "What number is missing in the progression?";
         $replacement = "..";
         $currentRound = 1;
-        $limitMaxRounds = 3;
+        $limitMaxRounds = LIMITROUND;
         $data = [];
     while ($currentRound <= $limitMaxRounds) {
             $gettingTask = generationTask();
