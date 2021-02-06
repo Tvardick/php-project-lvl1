@@ -6,22 +6,25 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Project\Cli\whatIsYourName;
 
-function gameFlow(string $terms, array $data): ?string
+function gameFlow(string $hello, array $data): ?string
 {
         $name = whatIsYourName();
-        $hello = line("%s", $terms);
+        $hello = line("%s", $hello);
+        $limitMaxRounds = count($data) / 2;
+        $task = 0;
+        $rigthAnswer = 1;
+
     for (
-            $currentRound = 1, $finalRound = 3,
-            $accessTask = 0, $accessAnswer = 1;
-            $currentRound <= $finalRound;
-            $accessTask += 2, $accessAnswer += 2,
+            $currentRound = 1;
+            $currentRound <= $limitMaxRounds;
+            $task += 2, $rigthAnswer += 2,
             $currentRound += 1
     ) {
-        line("Question: %s", $data[$accessTask]);
+        line("Question: %s", $data[$task]);
         $answer = prompt("Your Answer");
-        if ($answer != $data[$accessAnswer]) {
+        if ($answer != $data[$rigthAnswer]) {
              return line("%s is wrong answer ;(. Correct answer was %s.
-Let's try again, %s!", $answer, $data[$accessAnswer], $name);
+Let's try again, %s!", $answer, $data[$rigthAnswer], $name);
         } else {
                 line("Correct!");
         }

@@ -2,34 +2,25 @@
 
 namespace BrainGames\Project\Prime;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Project\Cli\whatIsYourName;
+use function BrainGames\Project\Engine\gameFlow;
 
-function isPrimeNumber(): ?string
+function isPrimeNumber()
 {
-    $name = whatIsYourName();
-    line("Answer \"yes\" if the number is prime, otherwise answer \"no\".");
     $currentRound = 1;
-    $maxRound = 3;
-    while ($currentRound <= $maxRound) {
-            $randomNumber = rand(1, 100);
-            $rigthAnswer = checkingPrimeNumber($randomNumber);
-            line("Question: %s", $randomNumber);
-            $answer = prompt("Your Answer");
-        if ($answer != $rigthAnswer) {
-                    return line("%s is wrong answer ;(. Correct answer was %s.
-        Let's try again, %s!", $answer, $rigthAnswer, $name);
-        } else {
-                    line("Correct!");
-        }
+    $limitMaxRounds = 3;
+    $hello = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
+    $data = [];
+    while ($currentRound <= $limitMaxRounds) {
+            $randomNum = rand(1, 100);
+            $rigthAnswer = checkPrimeNum($randomNum);
+            $data[] = $randomNum;
+            $data[] = $rigthAnswer;
             $currentRound += 1;
     }
-    return line("Congratulations, %s!", $name);
+    $send = gameFlow($hello, $data);
 }
 
-
-function checkingPrimeNumber(int $num): string
+function checkPrimeNumber(int $num): string
 {
         $bCheck = true;
         $highestIntegralSquareRoot = floor(sqrt($num));

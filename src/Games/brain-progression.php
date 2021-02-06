@@ -2,48 +2,40 @@
 
 namespace BrainGames\Project\Progression;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Project\Cli\whatIsYourName;
+use function BrainGames\Project\Engine\gameFlow;
+
+function getProgress()
+{
+        $hello = "What number is missing in the progression?";
+        $replacement = "..";
+        $currentRound = 1;
+        $limitMaxRounds = 3;
+        $data = [];
+    while ($currentRound <= $limitMaxRounds) {
+            $gettingTask = generationTask();
+            $countTask = count($gettingTask) - 1;
+            $replace = rand(1, $countTask);
+            $rigthAnswer = $gettingTask[$replace];
+            $gettingTask[$replace] = $replacement;
+            $convertToStr = implode(" ", $gettingTask);
+            $data[] = $convertToStr;
+            $data[] = $rigthAnswer;
+            $currentRound += 1;
+    }
+        $send = gameFlow($hello, $data);
+}
 
 function generationTask(): array
 {
         $numbers = [];
         $counter = 0;
-        $randomNumber = rand(1, 99);
-        $maxSizeTask = rand(5, 15);
-        $randomProgressiveNumber = rand(1, 10);
-    while ($counter <= $maxSizeTask) {
-        $numbers[] = $randomNumber;
-        $randomNumber += $randomProgressiveNumber;
+        $randomNum = rand(1, 99);
+        $sizeMaxTask = rand(5, 15);
+        $randomProgressiveNum = rand(1, 10);
+    while ($counter <= $sizeMaxTask) {
+        $numbers[] = $randomNum;
+        $randomNum += $randomProgressiveNum;
         $counter += 1;
     }
         return $numbers;
-}
-
-function randomNumberReplacement(): ?string
-{
-        $name = whatIsYourName();
-        line("What number is missing in the progression?");
-        $replacement = "..";
-        $currentRound = 1;
-        $maxRound = 3;
-    while ($currentRound <= $maxRound) {
-            $getTask = generationTask();
-            $sizeTask = count($getTask) - 1;
-            $randomNumber = rand(0, $sizeTask);
-        $rigthAnswer = $getTask[$randomNumber];
-        $getTask[$randomNumber] = $replacement;
-        $convertToStr = implode(" ", $getTask);
-        line("Question: %s", $convertToStr);
-        $answer = prompt("Your Answer");
-        if ($answer != $rigthAnswer) {
-                return line("%s is wrong answer ;(. Correct answer was %s.
-Let's try again, %s!", $answer, $rigthAnswer, $name);
-        } else {
-                line("Correct!");
-        }
-        $currentRound += 1;
-    }
-        return line("Congratulations, %s!", $name);
 }

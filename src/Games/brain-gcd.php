@@ -2,42 +2,34 @@
 
 namespace BrainGames\Project\Gcd;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Project\Cli\whatIsYourName;
+use function BrainGames\Project\Engine\gameFlow;
 
-function letsGreatCommonDivider(): ?string
+function findCommonDivider()
 {
     $currentRound = 1;
-    $maxLimitRound = 3;
-    $name = whatIsYourName();
-    line("Find the greatest common divisor of given numbers.");
-    while ($currentRound <= $maxLimitRound) {
-            $randomFirstNumber = rand(1, 100);
-            $randomSecondNumber = rand(1, 100);
-            $result = isTheGreatCommonDivider($randomFirstNumber, $randomSecondNumber);
-            line("Question: %s %s", $randomFirstNumber, $randomSecondNumber);
-            $answer = prompt("Your Answer");
-        if ($answer != $result) {
-                            return line("%s is wrong answer ;(. Correct answer was %s.
-                Let's try again, %s!", $answer, $result, $name);
-        } else {
-                            line("Correct!");
-        }
-                    $currentRound += 1;
+    $limitMaxRounds = 3;
+    $data = [];
+    $hello = "Find the greatest common divisor of given numbers.";
+    while ($currentRound <= $limitMaxRounds) {
+            $firstNum = rand(1, 100);
+            $secondNum = rand(1, 100);
+            $rigthAnswer = getCommonDivider($firstNum, $secondNum);
+            $combinationNum = "{$firstNum} {$secondNum}";
+            $data[] = $combinationNum;
+            $data[] = $rigthAnswer;
+            $currentRound += 1;
     }
-    return line("Congratulations, %s!", $name);
+    $sendData = gameFlow($hello, $data);
 }
 
-
-function isTheGreatCommonDivider(int $randomNumberOne, int $randomNumberTwo): int
+function getCommonDivider(int $numOne, int $numTwo): int
 {
-    while ($randomNumberOne != 0 && $randomNumberTwo != 0) {
-        if ($randomNumberOne > $randomNumberTwo) {
-                        $randomNumberOne = $randomNumberOne % $randomNumberTwo;
+    while ($numOne != 0 && $numTwo != 0) {
+        if ($numOne > $numTwo) {
+            $numOne = $numOne % $numTwo;
         } else {
-                        $randomNumberTwo = $randomNumberTwo % $randomNumberOne;
+            $numTwo = $numTwo % $numOne;
         }
     }
-        return $randomNumberOne + $randomNumberTwo;
+        return $numOne + $numTwo;
 }

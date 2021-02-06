@@ -4,19 +4,22 @@ namespace BrainGames\Project\Even;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-function isTheEvenNumber(): ?string
+function getEvenNumber()
 {
-    $helloUser = 'Answer "yes" if the number is even, otherwise answer "no".';
+    $hello = 'Answer "yes" if the number is even, otherwise answer "no".';
     $data = [];
-    for ($i = 0, $end = 2; $i <= $end; $i++) {
+    $currentRound = 1;
+    $limitMaxRounds = 3;
+    while ($currentRound <= $limitMaxRounds) {
         $data[] = $randomNumber = rand(1, 100);
-        $data[] = $rigthAnswer = checkingEvenNumber($randomNumber);
+        $data[] = $rigthAnswer = checkEvenNumber($randomNumber);
+        $currentRound += 1;
     }
-    $sendData = gameFlow($helloUser, $data);
-    return $sendData;
+    $sendData = gameFlow($hello, $data);
 }
-
-function checkingEvenNumber(int $num): string
+// Тут я не придумал как можно переделать функцию в предикант.
+// Ведь игра ожидает ответа yes или no.
+function checkEvenNumber(int $num): string
 {
     if ($num % 2 === 0) {
         return "yes";
