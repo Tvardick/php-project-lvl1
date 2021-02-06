@@ -20,7 +20,7 @@ function isPrimeNumber()
     $send = gameFlow($hello, $data);
 }
 
-function checkPrimeNumber(int $num): string
+function checkPrimeNum(int $num): string
 {
         $bCheck = true;
         $highestIntegralSquareRoot = floor(sqrt($num));
