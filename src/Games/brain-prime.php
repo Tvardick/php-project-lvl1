@@ -4,7 +4,7 @@ namespace BrainGames\Project\Prime;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-function isPrimeNumber()
+function isPrimeNumber(): void
 {
     $currentRound = 1;
     $limitMaxRounds = 3;

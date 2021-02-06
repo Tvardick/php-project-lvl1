@@ -4,7 +4,7 @@ namespace BrainGames\Project\Calc;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-function tryCalc()
+function tryCalc(): void
 {
     $data = [];
     $hello = "What is the data of the expression?";

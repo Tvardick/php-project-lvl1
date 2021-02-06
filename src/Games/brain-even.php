@@ -4,7 +4,7 @@ namespace BrainGames\Project\Even;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-function getEvenNumber()
+function getEvenNumber(): void
 {
     $hello = 'Answer "yes" if the number is even, otherwise answer "no".';
     $data = [];

@@ -4,7 +4,7 @@ namespace BrainGames\Project\Gcd;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-function findCommonDivider()
+function findCommonDivider(): void
 {
     $currentRound = 1;
     $limitMaxRounds = 3;

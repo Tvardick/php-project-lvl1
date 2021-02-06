@@ -4,7 +4,7 @@ namespace BrainGames\Project\Progression;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-function getProgress()
+function getProgress(): void
 {
         $hello = "What number is missing in the progression?";
         $replacement = "..";
