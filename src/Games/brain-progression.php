@@ -28,7 +28,7 @@ function getAnswer(string $task): string
     return $searchRigthAnswer;
 }
 
-function findAnswer(array $rows, int $diff): string
+function findAnswer(array $rows, int $diff): int
 {
     $result = [];
     foreach ($rows as $row) {
