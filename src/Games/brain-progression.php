@@ -13,7 +13,7 @@ function startGame(): void
     $start = gameFlow($hello, $task, $expectedAnswer);
 }
 
-function getAnswer(string $task): string
+function getAnswer(string $task): int
 {
     $diff = 0;
     $result = [];
