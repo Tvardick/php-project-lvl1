@@ -8,12 +8,12 @@ use function BrainGames\Project\Engine\gameFlow;
 function startGame(): void
 {
     $hello = "What number is missing in the progression?";
-    $nameSpace = "BrainGames\Project\Progression\getAnswer";
     $task = fn() => getTask();
-    $start = gameFlow($hello, $task, $nameSpace);
+    $expectedAnswer = fn($task) => getAnswer($task);
+    $start = gameFlow($hello, $task, $expectedAnswer);
 }
 
-function getAnswer(string $task)
+function getAnswer(string $task): string
 {
     $diff = 0;
     $result = [];
@@ -28,7 +28,7 @@ function getAnswer(string $task)
     return $searchRigthAnswer;
 }
 
-function findAnswer($rows, $diff)
+function findAnswer(array $rows, int $diff): string
 {
     $result = [];
     foreach ($rows as $row) {
@@ -40,7 +40,7 @@ function findAnswer($rows, $diff)
     return $answer;
 }
 
-function getTask()
+function getTask(): string
 {
     $replacement = "..";
     $gettingTask = createRowNumbers();

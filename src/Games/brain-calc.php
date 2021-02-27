@@ -7,9 +7,9 @@ use function BrainGames\Project\Engine\gameFlow;
 function startGame(): void
 {
     $hello = "What is the data of the expression?";
-    $nameSpace = "BrainGames\Project\Calc\getAnswer";
     $task = fn() => generationTask();
-    $start = gameFlow($hello, $task, $nameSpace);
+    $expectedAnswer = fn($task) => getAnswer($task);
+    $start = gameFlow($hello, $task, $expectedAnswer);
 }
 
 function generationTask(): string

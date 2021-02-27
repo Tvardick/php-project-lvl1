@@ -7,9 +7,9 @@ use function BrainGames\Project\Engine\gameFlow;
 function startGame(): void
 {
     $hello = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
-    $nameSpace = "BrainGames\Project\Prime\getAnswer";
     $task = fn() => rand(1, 100);
-    $start = gameFlow($hello, $task, $nameSpace);
+    $expectedAnswer = fn($task) => getAnswer($task);
+    $start = gameFlow($hello, $task, $expectedAnswer);
 }
 
 function checkTask(int $num): bool

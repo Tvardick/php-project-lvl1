@@ -7,9 +7,9 @@ use function BrainGames\Project\Engine\gameFlow;
 function startGame(): void
 {
     $hello = 'Answer "yes" if the number is even, otherwise answer "no".';
-    $nameSpace = "\BrainGames\Project\Even\getAnswer";
     $task = fn() => rand(1, 100);
-    $sendData = gameFlow($hello, $task, $nameSpace);
+    $expectedAnswer = fn($task) => getAnswer($task);
+    $sendData = gameFlow($hello, $task, $expectedAnswer);
 }
 
 function checkTask(int $num): bool

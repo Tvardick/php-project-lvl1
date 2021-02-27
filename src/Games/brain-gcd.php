@@ -7,9 +7,9 @@ use function BrainGames\Project\Engine\gameFlow;
 function startGame(): void
 {
     $hello = "Find the greatest common divisor of given numbers.";
-    $nameSpace = "BrainGames\Project\Gcd\getAnswer";
     $task = fn() => genTask();
-    $start = gameFlow($hello, $task, $nameSpace);
+    $expectedAnswer = fn($task) => getAnswer($task);
+    $start = gameFlow($hello, $task, $expectedAnswer);
 }
 
 function genTask(): string
