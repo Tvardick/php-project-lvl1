@@ -4,35 +4,30 @@ namespace BrainGames\Project\Prime;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-function isPrimeNumber(): void
+function startGame(): void
 {
-    $currentRound = 1;
-    $limitMaxRounds = LIMITROUND;
     $hello = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
-    $data = [];
-    while ($currentRound <= $limitMaxRounds) {
-            $randomNum = rand(1, 100);
-            $rigthAnswer = checkPrimeNum($randomNum);
-            $data[] = $randomNum;
-            $data[] = $rigthAnswer;
-            $currentRound += 1;
-    }
-    $send = gameFlow($hello, $data);
+    $nameSpace = "BrainGames\Project\Prime\getAnswer";
+    $task = fn() => rand(1, 100);
+    $start = gameFlow($hello, $task, $nameSpace);
 }
 
-function checkPrimeNum(int $num): string
+function checkTask(int $num): bool
 {
-        $bCheck = true;
+    if ($num < 2) {
+        return false;
+    }
         $highestIntegralSquareRoot = floor(sqrt($num));
     for ($i = 2; $i <= $highestIntegralSquareRoot; $i++) {
-        if ($num % $i == 0) {
-             $bCheck = false;
-             break;
+        if ($num % $i === 0) {
+             return false;
         }
     }
-    if ($bCheck) {
-          return 'yes';
-    } else {
-           return 'no';
-    }
+    return true;
+}
+
+function getAnswer(int $random): string
+{
+    $result = checkTask($random);
+    return $result ? "yes" : "no";
 }

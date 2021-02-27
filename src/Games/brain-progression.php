@@ -2,30 +2,55 @@
 
 namespace BrainGames\Project\Progression;
 
+use function Funct\Collection\firstN;
 use function BrainGames\Project\Engine\gameFlow;
 
-function getProgress(): void
+function startGame(): void
 {
-        $hello = "What number is missing in the progression?";
-        $replacement = "..";
-        $currentRound = 1;
-        $limitMaxRounds = LIMITROUND;
-        $data = [];
-    while ($currentRound <= $limitMaxRounds) {
-            $gettingTask = generationTask();
-            $countTask = count($gettingTask) - 1;
-            $replace = rand(1, $countTask);
-            $rigthAnswer = $gettingTask[$replace];
-            $gettingTask[$replace] = $replacement;
-            $convertToStr = implode(" ", $gettingTask);
-            $data[] = $convertToStr;
-            $data[] = $rigthAnswer;
-            $currentRound += 1;
-    }
-        $send = gameFlow($hello, $data);
+    $hello = "What number is missing in the progression?";
+    $nameSpace = "BrainGames\Project\Progression\getAnswer";
+    $task = fn() => getTask();
+    $start = gameFlow($hello, $task, $nameSpace);
 }
 
-function generationTask(): array
+function getAnswer(string $task)
+{
+    $diff = 0;
+    $result = [];
+    $backToRows = explode(" ", $task);
+    foreach ($backToRows as $item => $row) {
+        if ($row === "..") {
+            $diff = $item;
+            break;
+        }
+    }
+    $searchRigthAnswer = findAnswer($backToRows, $diff);
+    return $searchRigthAnswer;
+}
+
+function findAnswer($rows, $diff)
+{
+    $result = [];
+    foreach ($rows as $row) {
+        $result[] = intval($row);
+    }
+    $firstTwoValues = firstN($result, 2);
+    $diffValues = $firstTwoValues[1] - $firstTwoValues[0];
+    $answer = $result[$diff - 1] + $diffValues;
+    return $answer;
+}
+
+function getTask()
+{
+    $replacement = "..";
+    $gettingTask = createRowNumbers();
+    $countTask = count($gettingTask) - 1;
+    $replace = rand(3, $countTask);
+    $gettingTask[$replace] = $replacement;
+    return implode(" ", $gettingTask);
+}
+
+function createRowNumbers(): array
 {
         $numbers = [];
         $counter = 0;

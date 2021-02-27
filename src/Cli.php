@@ -2,13 +2,13 @@
 
 namespace BrainGames\Project\Cli;
 
-use function cli\line;
 use function cli\prompt;
+use function cli\line;
 
 function whatIsYourName(): string
 {
-    $hi = line("Welcome Brain Game!");
-    $name = prompt("May I have your name?");
-    $line = line("Hello, %s!", $name);
-    return $name;
+    $wellcome = line("Welcome Brain Game!");
+    $nameUser = prompt("May I have your name?");
+    $hello = line("Hello, %s!", $nameUser);
+    return $nameUser;
 }

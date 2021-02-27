@@ -10,7 +10,8 @@
     ],
     "require": {
         "wp-cli/php-cli-tools": "^0.11.11",
-        "langleyfoxall/math_eval": "^2.0.0"
+        "langleyfoxall/math_eval": "^2.0.0",
+        "funct/funct": "^1.5"
     },
     "bin": [
             "bin/brain-games",

@@ -4,22 +4,13 @@ namespace BrainGames\Project\Calc;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-function tryCalc(): void
+function startGame(): void
 {
-    $data = [];
     $hello = "What is the data of the expression?";
-    $currentRound = 1;
-    $limitMaxRounds = LIMITROUND;
-    while ($currentRound <= $limitMaxRounds) {
-            $getTask = generationTask();
-            $rigthAnswer = math_eval($getTask);
-            $data[] = $getTask;
-            $data[] = $rigthAnswer;
-            $currentRound += 1;
-    }
-    $sendData = gameFlow($hello, $data);
+    $nameSpace = "BrainGames\Project\Calc\getAnswer";
+    $task = fn() => generationTask();
+    $start = gameFlow($hello, $task, $nameSpace);
 }
-
 
 function generationTask(): string
 {
@@ -32,4 +23,9 @@ function generationTask(): string
     $data[] = $operands[$randomOperand];
     $data[] = $secondNum;
     return implode(" ", $data);
+}
+
+function getAnswer(string $mathExample): int
+{
+    return math_eval($mathExample);
 }
