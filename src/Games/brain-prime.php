@@ -4,12 +4,12 @@ namespace BrainGames\Project\Prime;
 
 use function BrainGames\Project\Engine\gameFlow;
 
+const HELLO = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
+
 function startGame(): void
 {
-    $hello = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
-    $task = fn() => rand(1, 100);
-    $expectedAnswer = fn($task) => getAnswer($task);
-    $start = gameFlow($hello, $task, $expectedAnswer);
+    $task = fn() => getTask();
+    gameFlow(HELLO, $task);
 }
 
 function checkTask(int $num): bool
@@ -26,8 +26,11 @@ function checkTask(int $num): bool
     return true;
 }
 
-function getAnswer(int $random): string
+function getTask(): array
 {
-    $result = checkTask($random);
-    return $result ? "yes" : "no";
+    $task = [];
+    $task["question"] = rand(1, 100);
+    $answer = checkTask($task["question"]);
+    $task["expectedAnswer"] = $answer ? "yes" : "no";
+    return $task;
 }

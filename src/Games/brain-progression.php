@@ -5,49 +5,26 @@ namespace BrainGames\Project\Progression;
 use function Funct\Collection\firstN;
 use function BrainGames\Project\Engine\gameFlow;
 
+const HELLO = "What number is missing in the progression?";
+
 function startGame(): void
 {
-    $hello = "What number is missing in the progression?";
     $task = fn() => getTask();
-    $expectedAnswer = fn($task) => getAnswer($task);
-    $start = gameFlow($hello, $task, $expectedAnswer);
+    gameFlow(HELLO, $task);
 }
 
-function getAnswer(string $task): int
+function getTask(): array
 {
-    $diff = 0;
-    $result = [];
-    $backToRows = explode(" ", $task);
-    foreach ($backToRows as $item => $row) {
-        if ($row === "..") {
-            $diff = $item;
-            break;
-        }
-    }
-    $searchRigthAnswer = findAnswer($backToRows, $diff);
-    return $searchRigthAnswer;
-}
-
-function findAnswer(array $rows, int $diff): int
-{
-    $result = [];
-    foreach ($rows as $row) {
-        $result[] = intval($row);
-    }
-    $firstTwoValues = firstN($result, 2);
-    $diffValues = $firstTwoValues[1] - $firstTwoValues[0];
-    $answer = $result[$diff - 1] + $diffValues;
-    return $answer;
-}
-
-function getTask(): string
-{
+    $task = [];
     $replacement = "..";
-    $gettingTask = createRowNumbers();
-    $countTask = count($gettingTask) - 1;
-    $replace = rand(3, $countTask);
-    $gettingTask[$replace] = $replacement;
-    return implode(" ", $gettingTask);
+    $rowNumber = createRowNumbers();
+    $countRow = count($rowNumber) - 1;
+    $replace = rand(1, $countRow);
+    $answer = $rowNumber[$replace];
+    $rowNumber[$replace] = $replacement;
+    $task["question"] = implode(" ", $rowNumber);
+    $task["expectedAnswer"] = $answer;
+    return $task;
 }
 
 function createRowNumbers(): array
@@ -55,11 +32,11 @@ function createRowNumbers(): array
         $numbers = [];
         $counter = 0;
         $randomNum = rand(1, 99);
-        $sizeMaxTask = rand(5, 15);
-        $randomProgressiveNum = rand(1, 10);
-    while ($counter <= $sizeMaxTask) {
+        $sizeRow = rand(5, 15);
+        $progressiveNum = rand(1, 10);
+    while ($counter <= $sizeRow) {
         $numbers[] = $randomNum;
-        $randomNum += $randomProgressiveNum;
+        $randomNum += $progressiveNum;
         $counter += 1;
     }
         return $numbers;

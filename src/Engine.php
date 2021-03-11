@@ -4,24 +4,23 @@ namespace BrainGames\Project\Engine;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Project\Cli\whatIsYourName;
+use function BrainGames\Project\Cli\askName;
 
-define('LIMITROUND', '2');
+const LIMITROUND = 2;
 
-function gameFlow(string $hello, callable $task, callable $expectedAnswer): ?string
+function gameFlow(string $hello, callable $task): ?string
 {
-        $name = whatIsYourName();
-        $hello = line("%s", $hello);
-        $limitMaxRounds = LIMITROUND;
+    $name = askName();
+    $hello = line("%s", $hello);
+    $limitMaxRounds = LIMITROUND;
 
     for ($currentRound = 0; $currentRound <= $limitMaxRounds; $currentRound += 1) {
         $callAbleTask = call_user_func($task);
-        $expectedResponse = call_user_func($expectedAnswer, $callAbleTask);
-        line("Question: %s", $callAbleTask);
+        line("Question: %s", $callAbleTask['question']);
         $userAnswer = prompt("Your Answer");
-        if ($userAnswer != $expectedResponse) {
+        if ($userAnswer != $callAbleTask['expectedAnswer']) {
              return line("%s is wrong answer ;(. Correct answer was %s.
-Let's try again, %s!", $userAnswer, $expectedResponse, $name);
+Let's try again, %s!", $userAnswer, $callAbleTask['expectedAnswer'], $name);
         } else {
                 line("Correct!");
         }
