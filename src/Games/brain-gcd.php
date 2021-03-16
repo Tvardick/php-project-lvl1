@@ -4,12 +4,12 @@ namespace BrainGames\Project\Gcd;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-const HELLO = "Find the greatest common divisor of given numbers.";
+const TASK_FOR_WIN = "Find the greatest common divisor of given numbers.";
 
 function startGame(): void
 {
     $task = fn() => getTask();
-    gameFlow(HELLO, $task);
+    gameFlow(TASK_FOR_WIN, $task);
 }
 
 function getTask(): array
@@ -18,8 +18,8 @@ function getTask(): array
     $firstNum = rand(1, 100);
     $secondNum = rand(1, 100);
     $combinationNum = "{$firstNum} {$secondNum}";
-    $task["question"] = $combinationNum;
-    $task["expectedAnswer"] = getAnswer($combinationNum);
+    $task[] = $combinationNum;
+    $task[] = getAnswer($combinationNum);
     return $task;
 }
 
@@ -34,5 +34,5 @@ function getAnswer(string $combination): int
             $numTwo = $numTwo % $numOne;
         }
     }
-        return $numOne + $numTwo;
+    return $numOne + $numTwo;
 }

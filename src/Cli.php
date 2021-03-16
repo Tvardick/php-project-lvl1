@@ -7,8 +7,8 @@ use function cli\line;
 
 function askName(): string
 {
-    $wellcome = line("Welcome Brain Game!");
+    line("Welcome Brain Game!");
     $nameUser = prompt("May I have your name?");
-    $hello = line("Hello, %s!", $nameUser);
+    line("Hello, %s!", $nameUser);
     return $nameUser;
 }

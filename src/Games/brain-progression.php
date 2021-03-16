@@ -5,12 +5,12 @@ namespace BrainGames\Project\Progression;
 use function Funct\Collection\firstN;
 use function BrainGames\Project\Engine\gameFlow;
 
-const HELLO = "What number is missing in the progression?";
+const TASK_FOR_WIN = "What number is missing in the progression?";
 
 function startGame(): void
 {
     $task = fn() => getTask();
-    gameFlow(HELLO, $task);
+    gameFlow(TASK_FOR_WIN, $task);
 }
 
 function getTask(): array
@@ -22,22 +22,32 @@ function getTask(): array
     $replace = rand(1, $countRow);
     $answer = $rowNumber[$replace];
     $rowNumber[$replace] = $replacement;
-    $task["question"] = implode(" ", $rowNumber);
-    $task["expectedAnswer"] = $answer;
+    $task[] = implode(" ", $rowNumber);
+    $task[] = $answer;
     return $task;
 }
 
 function createRowNumbers(): array
 {
-        $numbers = [];
-        $counter = 0;
-        $randomNum = rand(1, 99);
-        $sizeRow = rand(5, 15);
-        $progressiveNum = rand(1, 10);
+    $numbers = [];
+    [$randomNum, $sizeRow, $progressiveNum] = generateFirstPool();
+    $counter = 0;
     while ($counter <= $sizeRow) {
         $numbers[] = $randomNum;
         $randomNum += $progressiveNum;
         $counter += 1;
     }
-        return $numbers;
+    return $numbers;
+}
+
+function generateFirstPool(): array
+{
+    $numbers = [];
+    $randomNum = rand(1, 99);
+    $sizeRow = rand(5, 15);
+    $progressiveNum = rand(1, 10);
+    $numbers[] = $randomNum;
+    $numbers[] = $sizeRow;
+    $numbers[] = $progressiveNum;
+    return $numbers;
 }

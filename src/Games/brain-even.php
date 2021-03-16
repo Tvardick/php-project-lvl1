@@ -4,12 +4,12 @@ namespace BrainGames\Project\Even;
 
 use function BrainGames\Project\Engine\gameFlow;
 
-const HELLO = 'Answer "yes" if the number is even, otherwise answer "no".';
+const TASK_FOR_WIN = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function startGame(): void
 {
     $task = fn() => getTask();
-    gameFlow(HELLO, $task);
+    gameFlow(TASK_FOR_WIN, $task);
 }
 
 function getAnswer(int $num): bool
@@ -20,9 +20,7 @@ function getAnswer(int $num): bool
 function getTask(): array
 {
     $task = [];
-    $task['question'] = rand(1, 100);
-    //здесь надо создавать переменную для вызова функции
-    //что бы потом через тернарный оператор выяснить ответ?
-    $task['expectedAnswer'] = getAnswer($task['question']) ? 'yes' : 'no';
+    $task[] = rand(1, 100);
+    $task[] = getAnswer($task[0]) ? 'yes' : 'no';
     return $task;
 }
