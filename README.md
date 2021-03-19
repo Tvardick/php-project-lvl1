@@ -6,7 +6,7 @@
 [![Github Actions Status](https://github.com/Tvardick/php-project-lvl1/workflows/CI/badge.svg)](https://github.com/Tvardick/php-project-lvl1/actions)
 
 ### Brain-Even
-[![asciicast](https://asciinema.org/a/KLtx5NhGcv2Hqa6McxN6cLE5S.svg)](https://asciinema.org/a/KLtx5NhGcv2Hqa6McxN6cLE5S)
+<script id="asciicast-KLtx5NhGcv2Hqa6McxN6cLE5S" src="https://asciinema.org/a/KLtx5NhGcv2Hqa6McxN6cLE5S.js" async></script>
 ### Brain-Calc
 https://asciinema.org/a/nqwpvNb3LtBGjcQPmLZbe7tUa
 ### Brain-Gcd
