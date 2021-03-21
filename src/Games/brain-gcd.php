@@ -19,18 +19,18 @@ function getTask(): array
     $secondNum = rand(1, 100);
     $combinationNum = "{$firstNum} {$secondNum}";
     $task[] = $combinationNum;
-    $task[] = getAnswer($combinationNum);
+    $task[] = (string)getAnswer($combinationNum);
     return $task;
 }
 
-function getAnswer(string $combination): string
+function getAnswer(string $combination): int
 {
     $numOne = intval(substr($combination, 0, 2));
     $numTwo = intval(substr($combination, 2));
     return getCommonDivisor($numOne, $numTwo);
 }
 
-function getCommonDivisor(int $numOne, int $numTwo): string
+function getCommonDivisor(int $numOne, int $numTwo): int
 {
     while ($numOne !== 0 && $numTwo !== 0) {
         if ($numOne > $numTwo) {
@@ -39,5 +39,5 @@ function getCommonDivisor(int $numOne, int $numTwo): string
             $numTwo = $numTwo % $numOne;
         }
     }
-    return (string) $numOne + $numTwo;
+    return $numOne + $numTwo;
 }
