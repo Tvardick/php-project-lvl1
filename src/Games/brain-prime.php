@@ -2,17 +2,17 @@
 
 namespace BrainGames\Project\Prime;
 
-use function BrainGames\Project\Engine\gameFlow;
+use function BrainGames\Project\Engine\getResultGame;
 
-const TASK_FOR_WIN = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
+const TASKED_QUESTION = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
 
 function startGame(): void
 {
     $task = fn() => getTask();
-    gameFlow(TASK_FOR_WIN, $task);
+    getResultGame(TASKED_QUESTION, $task);
 }
 
-function getAnswer(int $num): bool
+function isPrimeNumber(int $num): bool
 {
     if ($num < 2) {
         return false;
@@ -30,7 +30,6 @@ function getTask(): array
 {
     $task = [];
     $task[] = rand(1, 100);
-    $answer = getAnswer($task[0]);
-    $task[] = $answer ? "yes" : "no";
+    $task[] = isPrimeNumber($task[0]) ? "yes" : "no";
     return $task;
 }

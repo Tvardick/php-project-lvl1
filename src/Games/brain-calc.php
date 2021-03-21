@@ -2,17 +2,17 @@
 
 namespace BrainGames\Project\Calc;
 
-use function BrainGames\Project\Engine\gameFlow;
+use function BrainGames\Project\Engine\getResultGame;
 
-const TASK_FOR_WIN = "What is the data of the expression?";
+const TASKED_QUESTION = "What is the data of the expression?";
 
 function startGame(): void
 {
     $task = fn() => getTask();
-    gameFlow(TASK_FOR_WIN, $task);
+    getResultGame(TASKED_QUESTION, $task);
 }
 
-function genMathExample(): array
+function creatTask(): array
 {
     $data = [];
     $operands = ["+", "-", "*"];
@@ -28,22 +28,25 @@ function genMathExample(): array
 function getTask(): array
 {
     $task = [];
-    $mathExample = genMathExample();
-    $taskSolution = getAnswer($mathExample);
-    $completeTask = implode(" ", $mathExample);
+    $mathTask = creatTask();
+    $taskSolution = getAnswer($mathTask);
+    $completeTask = implode(" ", $mathTask);
     $task[] = $completeTask;
     $task[] = $taskSolution;
     return $task;
 }
 
-function getAnswer(array $mathExample): int
+function getAnswer(array $mathTask): string
 {
-    if ($mathExample[1] === "-") {
-        $taskSolution = $mathExample[0] - $mathExample[2];
-    } elseif ($mathExample[1] === "+") {
-        $taskSolution = $mathExample[0] + $mathExample[2];
-    } else {
-        $taskSolution = $mathExample[0] * $mathExample[2];
+    switch ($mathTask[1]) {
+        case "-":
+            $taskSolution = $mathTask[0] - $mathTask[2];
+            break;
+        case "+":
+            $taskSolution = $mathTask[0] + $mathTask[2];
+            break;
+        default:
+            $taskSolution = $mathTask[0] * $mathTask[2];
     }
-    return $taskSolution;
+    return (string) $taskSolution;
 }

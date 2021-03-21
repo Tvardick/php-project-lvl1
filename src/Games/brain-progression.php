@@ -3,44 +3,17 @@
 namespace BrainGames\Project\Progression;
 
 use function Funct\Collection\firstN;
-use function BrainGames\Project\Engine\gameFlow;
+use function BrainGames\Project\Engine\getResultGame;
 
-const TASK_FOR_WIN = "What number is missing in the progression?";
+const TASKED_QUESTION = "What number is missing in the progression?";
 
 function startGame(): void
 {
     $task = fn() => getTask();
-    gameFlow(TASK_FOR_WIN, $task);
+    getResultGame(TASKED_QUESTION, $task);
 }
 
 function getTask(): array
-{
-    $task = [];
-    $replacement = "..";
-    $rowNumber = createRowNumbers();
-    $countRow = count($rowNumber) - 1;
-    $replace = rand(1, $countRow);
-    $answer = $rowNumber[$replace];
-    $rowNumber[$replace] = $replacement;
-    $task[] = implode(" ", $rowNumber);
-    $task[] = $answer;
-    return $task;
-}
-
-function createRowNumbers(): array
-{
-    $numbers = [];
-    [$randomNum, $sizeRow, $progressiveNum] = generateFirstPool();
-    $counter = 0;
-    while ($counter <= $sizeRow) {
-        $numbers[] = $randomNum;
-        $randomNum += $progressiveNum;
-        $counter += 1;
-    }
-    return $numbers;
-}
-
-function generateFirstPool(): array
 {
     $numbers = [];
     $randomNum = rand(1, 99);
@@ -49,5 +22,31 @@ function generateFirstPool(): array
     $numbers[] = $randomNum;
     $numbers[] = $sizeRow;
     $numbers[] = $progressiveNum;
-    return $numbers;
+    return createRowNumbers($numbers);
+}
+
+function createRowNumbers(array $numbers): array
+{
+    [$randomNum, $sizeRow, $progressiveNum] = $numbers;
+    $completeRow = [];
+    $counter = 0;
+    while ($counter <= $sizeRow) {
+        $completeRow[] = $randomNum;
+        $randomNum += $progressiveNum;
+        $counter += 1;
+    }
+    return getReplace($completeRow);
+}
+
+function getReplace(array $completeRow): array
+{
+    $task = [];
+    $replacement = "..";
+    $countRow = count($completeRow) - 1;
+    $replace = rand(1, $countRow);
+    $answer = $completeRow[$replace];
+    $completeRow[$replace] = $replacement;
+    $task[] = implode(" ", $completeRow);
+    $task[] = (string) $answer;
+    return $task;
 }

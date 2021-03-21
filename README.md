@@ -6,12 +6,12 @@
 [![Github Actions Status](https://github.com/Tvardick/php-project-lvl1/workflows/CI/badge.svg)](https://github.com/Tvardick/php-project-lvl1/actions)
 
 ### Brain-Even
-<script id="asciicast-KLtx5NhGcv2Hqa6McxN6cLE5S" src="https://asciinema.org/a/KLtx5NhGcv2Hqa6McxN6cLE5S.js" async></script>
+[![asciicast](https://asciinema.org/a/wlQLDmtFa9DQ34Gz4NQ4IXZ4J.svg)](https://asciinema.org/a/wlQLDmtFa9DQ34Gz4NQ4IXZ4J)
 ### Brain-Calc
-https://asciinema.org/a/nqwpvNb3LtBGjcQPmLZbe7tUa
+[![asciicast](https://asciinema.org/a/f3ZQiwoBUJJHEyhfB3xoElMjT.svg)](https://asciinema.org/a/f3ZQiwoBUJJHEyhfB3xoElMjT)
 ### Brain-Gcd
-https://asciinema.org/a/nuFRJJLNA2Jiy4lda0qJr1TXz
+[![asciicast](https://asciinema.org/a/tylL1O9HfgUvwj4X1KGkxWTZg.svg)](https://asciinema.org/a/tylL1O9HfgUvwj4X1KGkxWTZg)
 ### Brain-Progression
-https://asciinema.org/a/L2meoF87xv3HGG70raIaMjfNA
+[![asciicast](https://asciinema.org/a/DnivcsOgIlpdw8VhOBSS6sNj0.svg)](https://asciinema.org/a/DnivcsOgIlpdw8VhOBSS6sNj0)
 ### Brain-Prime
-https://asciinema.org/a/X3Yh4SdChtjT435tIfPndpyvK
+[![asciicast](https://asciinema.org/a/YA6ShP8xIyyhI5g0Jb1dAZqQI.svg)](https://asciinema.org/a/YA6ShP8xIyyhI5g0Jb1dAZqQI)
