@@ -2,14 +2,14 @@
 
 namespace BrainGames\Project\Prime;
 
-use function BrainGames\Project\Engine\getResultGame;
+use function BrainGames\Project\Engine\runGame;
 
-const TASKED_QUESTION = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
+const TASK_DESCRIPTION = "Answer \"yes\" if the number is prime, otherwise answer \"no\".";
 
 function startGame(): void
 {
-    $task = fn() => getTask();
-    getResultGame(TASKED_QUESTION, $task);
+    $getTask = fn() => getTask();
+    runGame(TASK_DESCRIPTION, $getTask);
 }
 
 function isPrimeNumber(int $num): bool

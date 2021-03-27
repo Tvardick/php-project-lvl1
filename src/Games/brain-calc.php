@@ -2,51 +2,48 @@
 
 namespace BrainGames\Project\Calc;
 
-use function BrainGames\Project\Engine\getResultGame;
+use function BrainGames\Project\Engine\runGame;
 
-const TASKED_QUESTION = "What is the data of the expression?";
+const TASK_DESCRIPTION = "What is the data of the expression?";
 
 function startGame(): void
 {
-    $task = fn() => getTask();
-    getResultGame(TASKED_QUESTION, $task);
+    $initTask = fn() => initTask();
+    runGame(TASK_DESCRIPTION, $initTask);
 }
 
-function creatTask(): array
+function initTask(): array
 {
-    $data = [];
     $operands = ["+", "-", "*"];
     $randomOperand = rand(0, 2);
     $firstNum = rand(1, 99);
     $secondNum = rand(1, 10);
-    $data[] = $firstNum;
-    $data[] = $operands[$randomOperand];
-    $data[] = $secondNum;
-    return $data;
+    return getTask($firstNum, $operands[$randomOperand], $secondNum);
 }
 
-function getTask(): array
+function getTask(int $firstNum, string $operand, int $secondNum): array
 {
     $task = [];
-    $mathTask = creatTask();
-    $taskSolution = getAnswer($mathTask);
-    $completeTask = implode(" ", $mathTask);
+    $completeTask = "{$firstNum} {$operand} {$secondNum}";
     $task[] = $completeTask;
-    $task[] = $taskSolution;
+    $task[] = (string)getAnswer($firstNum, $operand, $secondNum);
+
     return $task;
 }
 
-function getAnswer(array $mathTask): string
+function getAnswer(int $firstNum, string $operand, int $secondNum): int
 {
-    switch ($mathTask[1]) {
+    $taskSolution = "";
+    switch ($operand) {
         case "-":
-            $taskSolution = $mathTask[0] - $mathTask[2];
+            $taskSolution = $firstNum - $secondNum;
             break;
         case "+":
-            $taskSolution = $mathTask[0] + $mathTask[2];
+            $taskSolution = $firstNum + $secondNum;
             break;
-        default:
-            $taskSolution = $mathTask[0] * $mathTask[2];
+        case "*":
+            $taskSolution = $firstNum * $secondNum;
+            break;
     }
-    return (string) $taskSolution;
+    return $taskSolution;
 }
