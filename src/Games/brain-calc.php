@@ -26,7 +26,7 @@ function getTask(int $firstNum, string $operand, int $secondNum): array
     $task = [];
     $completeTask = "{$firstNum} {$operand} {$secondNum}";
     $task[] = $completeTask;
-    $task[] = getAnswer($firstNum, $operand, $secondNum);
+    $task[] = (string)getAnswer($firstNum, $operand, $secondNum);
 
     return $task;
 }
