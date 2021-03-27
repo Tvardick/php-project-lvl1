@@ -26,14 +26,14 @@ function getTask(int $firstNum, string $operand, int $secondNum): array
     $task = [];
     $completeTask = "{$firstNum} {$operand} {$secondNum}";
     $task[] = $completeTask;
-    $task[] = (string)getAnswer($firstNum, $operand, $secondNum);
+    $task[] = getAnswer($firstNum, $operand, $secondNum);
 
     return $task;
 }
 
 function getAnswer(int $firstNum, string $operand, int $secondNum): int
 {
-    $taskSolution = "";
+    $taskSolution = 0;
     switch ($operand) {
         case "-":
             $taskSolution = $firstNum - $secondNum;
