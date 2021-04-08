@@ -5,6 +5,7 @@ namespace BrainGames\Project\Calc;
 use function BrainGames\Project\Engine\runGame;
 
 const TASK_DESCRIPTION = "What is the data of the expression?";
+const OPERATIONS = ["+", "-", "*"];
 
 function startGame(): void
 {
@@ -14,27 +15,26 @@ function startGame(): void
 
 function initTask(): array
 {
-    $operands = ["+", "-", "*"];
-    $randomOperand = rand(0, 2);
+    $randomOperation = rand(0, 2);
     $firstNum = rand(1, 99);
     $secondNum = rand(1, 10);
-    return getTask($firstNum, $operands[$randomOperand], $secondNum);
+    return getTask(OPERATIONS[$randomOperation], $firstNum, $secondNum);
 }
 
-function getTask(int $firstNum, string $operand, int $secondNum): array
+function getTask(string $operation, int $firstNum, int $secondNum): array
 {
     $task = [];
-    $completeTask = "{$firstNum} {$operand} {$secondNum}";
-    $task[] = $completeTask;
-    $task[] = (string)getAnswer($firstNum, $operand, $secondNum);
+    $prepareTask = "{$firstNum} {$operation} {$secondNum}";
+    $task[] = $prepareTask;
+    $task[] = (string)getResultOperation($operation, $firstNum, $secondNum);
 
     return $task;
 }
 
-function getAnswer(int $firstNum, string $operand, int $secondNum): int
+function getResultOperation(string $operation, int $firstNum, int $secondNum): int
 {
     $taskSolution = 0;
-    switch ($operand) {
+    switch ($operation) {
         case "-":
             $taskSolution = $firstNum - $secondNum;
             break;
@@ -44,6 +44,8 @@ function getAnswer(int $firstNum, string $operand, int $secondNum): int
         case "*":
             $taskSolution = $firstNum * $secondNum;
             break;
+        default:
+            throw new Exception("Unknown operation: {$operation}");
     }
     return $taskSolution;
 }

@@ -5,6 +5,8 @@ namespace BrainGames\Project\Progression;
 use function BrainGames\Project\Engine\runGame;
 
 const TASK_DESCRIPTION = "What number is missing in the progression?";
+const REPLACEMENT = "..";
+const BEGIN_NUMBER = 1;
 
 function startGame(): void
 {
@@ -16,14 +18,13 @@ function initTask(): array
 {
     $sizeRow = rand(5, 15);
     $progressiveNum = rand(1, 10);
-    $beginNumber = 1;
-    return createRowNumbers($sizeRow, $progressiveNum, $beginNumber);
+    return createRowNumbers($sizeRow, $progressiveNum);
 }
 
-function createRowNumbers(int $sizeRow, int $progressiveNum, int $beginNumber): array
+function createRowNumbers(int $sizeRow, int $progressiveNum): array
 {
     $completeRow = [];
-    for ($i = $beginNumber; $i <= $sizeRow; $i++) {
+    for ($i = BEGIN_NUMBER; $i <= $sizeRow; $i++) {
         $completeRow[] = $i * $progressiveNum;
     }
     return getReplace($completeRow);
@@ -31,13 +32,20 @@ function createRowNumbers(int $sizeRow, int $progressiveNum, int $beginNumber): 
 
 function getReplace(array $completeRow): array
 {
-    $task = [];
-    $replacement = "..";
-    $countRow = count($completeRow) - 1;
-    $replace = rand(1, $countRow);
-    $answer = $completeRow[$replace];
-    $completeRow[$replace] = $replacement;
-    $task[] = implode(" ", $completeRow);
-    $task[] = (string)$answer;
-    return $task;
+    $count = count($completeRow) - 1;
+    $replace = rand(1, $count);
+    return creatingTask($completeRow, $replace);
+}
+
+function creatingTask(array $completeRow, int $replace): array
+{
+    $numericalProgression = $completeRow;
+    $answer = $numericalProgression[$replace];
+    $numericalProgression[$replace] = REPLACEMENT;
+    return getTask($numericalProgression, $answer);
+}
+
+function getTask($numericalProgression, $answer)
+{
+    return [0 => implode(" ", $numericalProgression), 1 => (string)$answer];
 }
