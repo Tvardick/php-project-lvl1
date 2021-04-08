@@ -45,7 +45,7 @@ function getResultOperation(string $operation, int $firstNum, int $secondNum): i
             $taskSolution = $firstNum * $secondNum;
             break;
         default:
-            throw new Exception("Unknown operation: {$operation}");
+            throw new \Exception("Unknown operation: {$operation}");
     }
     return $taskSolution;
 }

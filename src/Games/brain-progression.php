@@ -45,7 +45,7 @@ function creatingTask(array $completeRow, int $replace): array
     return getTask($numericalProgression, $answer);
 }
 
-function getTask($numericalProgression, $answer)
+function getTask(array $numericalProgression, int $answer): array
 {
     return [0 => implode(" ", $numericalProgression), 1 => (string)$answer];
 }
