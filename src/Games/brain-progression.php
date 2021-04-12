@@ -6,46 +6,50 @@ use function BrainGames\Project\Engine\runGame;
 
 const TASK_DESCRIPTION = "What number is missing in the progression?";
 const REPLACEMENT = "..";
-const BEGIN_NUMBER = 1;
 
 function startGame(): void
 {
-    $initTask = fn() => initTask();
-    runGame(TASK_DESCRIPTION, $initTask);
+    $getTask = fn() => getTask();
+    runGame(TASK_DESCRIPTION, $getTask);
 }
 
-function initTask(): array
+function initProgress(): array
 {
     $sizeRow = rand(5, 15);
+    $beginNumber = 1;
     $progressiveNum = rand(1, 10);
-    return createRowNumbers($sizeRow, $progressiveNum);
+    return [$sizeRow, $progressiveNum, $beginNumber];
 }
 
-function createRowNumbers(int $sizeRow, int $progressiveNum): array
+function creatingSeriesNumbers(int $sizeRow, int $progressiveNum, int $beginNumber): array
 {
     $completeRow = [];
-    for ($i = BEGIN_NUMBER; $i <= $sizeRow; $i++) {
+    for ($i = $beginNumber; $i <= $sizeRow; $i++) {
         $completeRow[] = $i * $progressiveNum;
     }
-    return getReplace($completeRow);
+    return $completeRow;
 }
 
-function getReplace(array $completeRow): array
+function findReplacement(array $completeRow): int
 {
     $count = count($completeRow) - 1;
     $replace = rand(1, $count);
-    return creatingTask($completeRow, $replace);
+    return $replace;
 }
 
-function creatingTask(array $completeRow, int $replace): array
+function replacementNumber(array $completeRow, int $replace): array
 {
     $numericalProgression = $completeRow;
     $answer = $numericalProgression[$replace];
     $numericalProgression[$replace] = REPLACEMENT;
-    return getTask($numericalProgression, $answer);
+    return [$numericalProgression, $answer];
 }
 
-function getTask(array $numericalProgression, int $answer): array
+function getTask(): array
 {
-    return [0 => implode(" ", $numericalProgression), 1 => (string)$answer];
+    [$sizeRow, $progressiveNum, $beginNumber] = initProgress();
+    $progression = creatingSeriesNumbers($sizeRow, $progressiveNum, $beginNumber);
+    $replace = findReplacement($progression);
+    [$numericalProgression, $answer] = replacementNumber($progression, $replace);
+    return [implode(" ", $numericalProgression), (string)$answer];
 }
