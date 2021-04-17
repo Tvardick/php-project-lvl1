@@ -15,41 +15,46 @@ function startGame(): void
 
 function initProgress(): array
 {
-    $sizeRow = rand(5, 15);
+    $size = rand(5, 15);
     $beginNumber = 1;
     $progressiveNum = rand(1, 10);
-    return [$sizeRow, $progressiveNum, $beginNumber];
+    return [$size, $progressiveNum, $beginNumber];
 }
 
-function creatingSeriesNumbers(int $sizeRow, int $progressiveNum, int $beginNumber): array
+function createProgression(int $size, int $progressiveNum, int $beginNumber): array
 {
-    $completeRow = [];
-    for ($i = $beginNumber; $i <= $sizeRow; $i++) {
-        $completeRow[] = $i * $progressiveNum;
+    $progression = [];
+    for ($i = $beginNumber; $i <= $size; $i++) {
+        $progression[] = $i * $progressiveNum;
     }
-    return $completeRow;
+    return $progression;
 }
 
-function findReplacement(array $completeRow): int
+function findReplace(array $progression): int
 {
-    $count = count($completeRow) - 1;
+    $count = count($progression) - 1;
     $replace = rand(1, $count);
     return $replace;
 }
 
-function replacementNumber(array $completeRow, int $replace): array
+function getAnswer(array $progression, int $replace): int
 {
-    $numericalProgression = $completeRow;
-    $answer = $numericalProgression[$replace];
-    $numericalProgression[$replace] = REPLACEMENT;
-    return [$numericalProgression, $answer];
+    $answer = $progression[$replace];
+    return $answer;
+}
+
+function replaceNumber(array $progression, int $replace): array
+{
+    $progression[$replace] = REPLACEMENT;
+    return $progression;
 }
 
 function getTask(): array
 {
-    [$sizeRow, $progressiveNum, $beginNumber] = initProgress();
-    $progression = creatingSeriesNumbers($sizeRow, $progressiveNum, $beginNumber);
-    $replace = findReplacement($progression);
-    [$numericalProgression, $answer] = replacementNumber($progression, $replace);
-    return [implode(" ", $numericalProgression), (string)$answer];
+    [$size, $progressiveNum, $beginNumber] = initProgress();
+    $progression = createProgression($size, $progressiveNum, $beginNumber);
+    $replace = findReplace($progression);
+    $answer = getAnswer($progression, $replace);
+    $replaceProgression = replaceNumber($progression, $replace);
+    return [implode(" ", $replaceProgression), (string)$answer];
 }

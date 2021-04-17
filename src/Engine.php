@@ -9,7 +9,7 @@ const ROUNDS_COUNT = 3;
 
 function runGame(string $taskDescription, callable $getTask): void
 {
-    line("Welcome Brain Game!");
+    line("Welcome to the Brain Games!");
     $nameUser = prompt("May I have your name?");
     line("Hello, %s!", $nameUser);
     line("%s", $taskDescription);

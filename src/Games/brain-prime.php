@@ -17,8 +17,8 @@ function isPrimeNumber(int $num): bool
     if ($num < 2) {
         return false;
     }
-    $maxmimumDivisor = floor(sqrt($num));
-    for ($i = 2; $i <= $maxmimumDivisor; $i++) {
+    $maxDivisor = floor(sqrt($num));
+    for ($i = 2; $i <= $maxDivisor; $i++) {
         if ($num % $i === 0) {
              return false;
         }
